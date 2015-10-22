@@ -1,0 +1,125 @@
+#!/usr/bin/env ruby
+require_relative 'which'
+require_relative 'PkgMgrs'
+
+
+args=ARGV
+argsShift=[]
+
+for i in args do
+  argsShift.push(i)
+end
+
+argsShift.shift
+
+for i in argsShift do
+  pkgArgs = "#{pkgArgs} #{i}"
+end
+
+#package managers to check for
+pkgMgrs = ["#{$debianBased}",
+            "#{$archLinux}",
+            "#{$voidLinux}"]
+
+#iterate over list of package managers
+#pass this to which(), take result and set it to pkgMgr
+for i in pkgMgrs do
+  if which(i) then
+    pkgMgr=i
+    break
+  end
+end
+
+# since some package managers have hyphens
+# and since methods can't have hyphens,
+# we take out any existing hyphens and replace them with underscores
+pkgMgr = pkgMgr.tr('-', '_')
+
+# check for and execute methods with the same name as pkgMgr contains
+send(pkgMgr)
+
+
+#pull variables from currently loaded method, e.g pacman()
+install = "#{$installCmd} #{pkgArgs}"
+search = "#{$searchCmd} #{pkgArgs}"
+update = "#{$updateCmd} #{pkgArgs}"
+remove = "#{$removeCmd} #{pkgArgs}"
+sync = "#{$syncCmd} #{pkgArgs}"
+supdate = "#{$syncANDupdateCmd} #{pkgArgs}"
+
+
+
+case args[0]
+
+# Install Options
+when
+  "i",
+  "-i",
+  "-S",
+  "get",
+  "install";  system ("sudo #{install}")
+
+# Search options
+when
+  "s",
+  "se",
+  "-s",
+  "-Ss",
+  "find",
+  "search";  system (search)
+
+# Update options (without syncing)
+when
+  "u",
+  "up",
+  "-u",
+  "-Su",
+  "upgrade";  system ("sudo #{update}")
+
+# Remove options
+when
+  "r",
+  "rm",
+  "-R",
+  "remove",
+  "delete";  system ("sudo #{remove}")
+
+# Sync options
+when
+  "sy",
+  "-Sy",
+  "sync",
+  "refresh";  system ("sudo #{sync}")
+
+# Update options (with syncing)
+when
+  "sup",
+  "-Syu",
+  "syncup";  system ("sudo #{supdate}")
+
+when
+  "-v",
+  "--version"; puts """
+
+  tux v0.1 - Universal package manager wrapper
+  \u00A9 2015 Justin Moore
+  """
+
+else
+  puts """
+  Usage : tux [options] [arguments]
+
+  Options:
+
+  i, -S, install        Install a package
+  r, -R, remove         Remove a package
+  s, -Ss, search        Search remote repository
+  sy, -Sy, sync         Sync package list from remote repository
+  u, -Su, upgrade       Upgrade packages on the system
+  su, -Syu, sup         Sync package list and upgrade system
+  -v, --version         Show current version
+
+
+  """
+
+end
