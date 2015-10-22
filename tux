@@ -93,6 +93,7 @@ when
 
 # Update options (with syncing)
 when
+  "su",
   "sup",
   "-Syu",
   "syncup";  system ("sudo #{supdate}")
