@@ -4,7 +4,7 @@
 
 $debianBased="apt-get"
 $archLinux="pacman"
-$voidLinux="xbps"
+$voidLinux="xbps-install"
 
 #command binding methods for different package managers
 def pacman()
