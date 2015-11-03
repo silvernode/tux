@@ -93,7 +93,7 @@ when
   "force-remove"; system ("sudo #{force_remove}")
 
 when
-  "c"
+  "c",
   "-c",
   "clean"; system ("sudo #{clean}")
 
