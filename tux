@@ -47,6 +47,7 @@ remove = "#{$removeCmd} #{pkgArgs}"
 force_remove = "#{$recursiveRemoveCmd} #{pkgArgs}"
 sync = "#{$syncCmd} #{pkgArgs}"
 supdate = "#{$syncANDupdateCmd} #{pkgArgs}"
+clean = "#{cleanCmd}"
 
 
 
@@ -91,6 +92,11 @@ when
   "-Rdd",
   "force-remove"; system ("sudo #{force_remove}")
 
+when
+  "-c",
+  "clean",
+  "autoremove"; system ("sudo #{clean}")
+
 # Sync options
 when
   "sy",
@@ -121,6 +127,7 @@ else
 
   i, -S, install        Install a package
   r, -R, remove         Remove a package
+  c, -c, clean          Remove orphan packages
   s, -Ss, search        Search remote repository
   sy, -Sy, sync         Sync package list from remote repository
   u, -Su, upgrade       Upgrade packages on the system
