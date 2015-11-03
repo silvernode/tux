@@ -17,7 +17,7 @@ def pacman()
   $removeCmd = "pacman -R"
   $recursiveRemoveCmd = "pacman -Rdd"
   $checkUpdatesCmd = "checkupdates"
-  $cleanCmd = "pacman -Qdt"
+  $cleanCmd = "pacman -Rsn $(pacman -Qdtq)"
 end
 
 def apt_get()
