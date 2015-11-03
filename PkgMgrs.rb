@@ -17,6 +17,7 @@ def pacman()
   $removeCmd = "pacman -R"
   $recursiveRemoveCmd = "pacman -Rdd"
   $checkUpdatesCmd = "checkupdates"
+  $cleanCmd = "pacman -Qdt"
 end
 
 def apt_get()
@@ -28,6 +29,7 @@ def apt_get()
   $refreshSyncCmd = "apt-get update"
   $removeCmd = "apt-get remove"
   $recursiveRemoveCmd = "apt-get --purge remove"
+  $cleanCmd = "apt-get autoremove"
   end
 
 def xbps_install()
@@ -39,4 +41,5 @@ def xbps_install()
   $refreshSyncCmd = "xbps-install -f -S"
   $removeCmd = "xbps-remove"
   $recursiveRemoveCmd = "xbps-remove -f"
+  $cleanCmd = "xbps-remove -O"
 end
