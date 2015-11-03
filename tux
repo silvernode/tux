@@ -57,6 +57,7 @@ when
   "i",
   "-i",
   "-S",
+  "add",
   "get",
   "install";  system ("sudo #{install}")
 
