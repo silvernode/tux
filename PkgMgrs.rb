@@ -24,7 +24,7 @@ def apt_get()
   $searchCmd = "apt-cache search"
   $updateCmd = "apt-get upgrade"
   $syncCmd = "apt-get update"
-  $syncANDupdateCmd = "apt-get update;apt-get upgrade"
+  $syncANDupdateCmd = "apt-get update; sudo apt-get upgrade"
   $refreshSyncCmd = "apt-get update"
   $removeCmd = "apt-get remove"
   $recursiveRemoveCmd = "apt-get --purge remove"
@@ -36,7 +36,7 @@ def xbps_install()
   $updateCmd = "xbps-install -u"
   $syncCmd = "xbps-install -S"
   $syncANDupdateCmd = "xbps-install -Su"
-  $refreshSyncCmd = "xbps-instal -f -S"
+  $refreshSyncCmd = "xbps-install -f -S"
   $removeCmd = "xbps-remove"
   $recursiveRemoveCmd = "xbps-remove -f"
 end

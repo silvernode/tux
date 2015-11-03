@@ -44,6 +44,7 @@ install = "#{$installCmd} #{pkgArgs}"
 search = "#{$searchCmd} #{pkgArgs}"
 update = "#{$updateCmd} #{pkgArgs}"
 remove = "#{$removeCmd} #{pkgArgs}"
+force_remove = "#{$recursiveRemoveCmd} #{pkgArgs}"
 sync = "#{$syncCmd} #{pkgArgs}"
 supdate = "#{$syncANDupdateCmd} #{pkgArgs}"
 
@@ -83,6 +84,11 @@ when
   "-R",
   "remove",
   "delete";  system ("sudo #{remove}")
+
+when
+  "-rf",
+  "-Rdd",
+  "force-remove"; system ("sudo #{force_remove}")
 
 # Sync options
 when
