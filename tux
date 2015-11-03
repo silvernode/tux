@@ -93,9 +93,9 @@ when
   "force-remove"; system ("sudo #{force_remove}")
 
 when
+  "c"
   "-c",
-  "clean",
-  "autoremove"; system ("sudo #{clean}")
+  "clean"; system ("sudo #{clean}")
 
 # Sync options
 when
