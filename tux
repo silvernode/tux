@@ -47,7 +47,7 @@ remove = "#{$removeCmd} #{pkgArgs}"
 force_remove = "#{$recursiveRemoveCmd} #{pkgArgs}"
 sync = "#{$syncCmd} #{pkgArgs}"
 supdate = "#{$syncANDupdateCmd} #{pkgArgs}"
-clean = "#{cleanCmd}"
+clean = "#{$cleanCmd}"
 
 
 
