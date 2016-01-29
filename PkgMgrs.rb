@@ -9,6 +9,7 @@ $voidLinux="xbps-install"
 #command binding methods for different package managers
 def pacman()
   $installCmd = "pacman -S"
+  $reinstallCmd = "pacman -S --force"
   $searchCmd = "pacman -Ss"
   $updateCmd = "pacman -Su"
   $syncCmd = "pacman -Sy"
@@ -22,6 +23,7 @@ end
 
 def apt_get()
   $installCmd = "apt-get install"
+  $reinstallCmd = "apt-get install --reinstall"
   $searchCmd = "apt-cache search"
   $updateCmd = "apt-get upgrade"
   $syncCmd = "apt-get update"
@@ -34,6 +36,7 @@ def apt_get()
 
 def xbps_install()
   $installCmd = "xbps-install"
+  $reinstallCmd = "xbps-install -f"
   $searchCmd = "xbps-query -Rs"
   $updateCmd = "xbps-install -u"
   $syncCmd = "xbps-install -S"

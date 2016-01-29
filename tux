@@ -41,6 +41,7 @@ send(pkgMgr)
 
 #pull variables from currently loaded method, e.g pacman()
 install = "#{$installCmd} #{pkgArgs}"
+reinstall = "#{$reinstallCmd} #{pkgArgs}"
 search = "#{$searchCmd} #{pkgArgs}"
 update = "#{$updateCmd} #{pkgArgs}"
 remove = "#{$removeCmd} #{pkgArgs}"
@@ -61,6 +62,12 @@ when
   "add",
   "get",
   "install";  system ("sudo #{install}")
+
+when
+  "ri",
+  "-ri",
+  "reinstall"; system ("sudo #{reinstall}")
+
 
 # Search options
 when
@@ -126,6 +133,7 @@ else
   Options:
 
   i, -S, install        Install a package
+  ri, -ri, reinstall    Reinstall a package
   r, -R, remove         Remove a package
   c, -c, clean          Remove orphan packages
   s, -Ss, search        Search remote repository
