@@ -1,4 +1,4 @@
-#Tux - Universal Package Manager Wrapper
+# Tux - Universal Package Manager Wrapper
 
 
 ## What is Tux?
